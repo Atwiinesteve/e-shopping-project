@@ -10,9 +10,13 @@ const ProductProvider = ({ children }) => {
 			const products = await response.json();
 			setProducts(products);
 		};
-    fetchProducts();
-	}, [products]);
-	return <ProductContext.Provider value={{products}}>{children}</ProductContext.Provider>;
+		fetchProducts();
+	}, []);
+	return (
+		<ProductContext.Provider value={{ products }}>
+			{children}
+		</ProductContext.Provider>
+	);
 };
 
 export default ProductProvider;
