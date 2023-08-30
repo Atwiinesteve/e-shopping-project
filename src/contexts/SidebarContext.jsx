@@ -7,7 +7,7 @@ export const SidebarContext = createContext();
 export const SidebarProvider = ({ children }) => {
 	const [sidebarOpen, setSidebarOpen] = React.useState(false);
 	const openSidebar = () => {
-		setSidebarOpen(true);
+		setSidebarOpen(false);
 	};
 	return (
 		<SidebarContext.Provider
