@@ -12,7 +12,7 @@ const Product = ({ product }) => {
 						<div className="w-[200px] mx-auto flex justify-center items-center">
 							<img
 								src={image}
-								alt=""
+								alt={title}
 								className="max-h-[160px] group-hover:scale-110 transition duration-300"
 							/>
 						</div>
@@ -31,7 +31,9 @@ const Product = ({ product }) => {
 					</div>
 				</div>
 				<div>
-					<div className="text-sm capitalize text-gray-500 mb-1">{category}</div>
+					<div className="text-sm capitalize text-gray-500 mb-1">
+						{category}
+					</div>
 					<Link to={`product/${id}`}>
 						<h2 className="font-semibold mb-1">{title}</h2>
 					</Link>
