@@ -11,6 +11,7 @@ import { CartContext } from "../contexts/CartContext";
 export default function Sidebar() {
 	const { sidebarOpen, setSidebarOpen, openSidebar } =
 		React.useContext(SidebarContext);
+	const { cart, removeFromCart, clearCart } = React.useContext(CartContext);
 	return (
 		<React.Fragment>
 			<div
@@ -27,7 +28,11 @@ export default function Sidebar() {
 						<IoMdArrowForward className="text-2xl" />
 					</div>
 				</div>
-				<div>Cart Items</div>
+				<div>{cart.map((item) => (
+					<div>
+						<CartItem key={item.id} item={item} />
+					</div>
+				))}</div>
 			</div>
 		</React.Fragment>
 	);
