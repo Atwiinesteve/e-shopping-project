@@ -9,9 +9,8 @@ import { SidebarContext } from "../contexts/SidebarContext";
 import { CartContext } from "../contexts/CartContext";
 
 export default function Sidebar() {
-	const { sidebarOpen, setSidebarOpen, openSidebar } =
-		React.useContext(SidebarContext);
-	const { cart, removeFromCart, clearCart } = React.useContext(CartContext);
+	const { sidebarOpen, openSidebar } = React.useContext(SidebarContext);
+	const { cart, clearCart } = React.useContext(CartContext);
 	return (
 		<React.Fragment>
 			<div
@@ -28,11 +27,25 @@ export default function Sidebar() {
 						<IoMdArrowForward className="text-2xl" />
 					</div>
 				</div>
-				<div>{cart.map((item) => (
-					<div>
-						<CartItem key={item.id} item={item} />
+				<div>
+					{cart.map((item) => (
+						<div>
+							<CartItem key={item.id} item={item} />
+						</div>
+					))}
+				</div>
+				<div className="flex flex-col gap-y-3 py-4 mt-4">
+					<div className="flex w-full justify-between items-center">
+						{/* total */}
+						<div className="uppercase font-semibold">
+							<span className="mr-2">Total: </span>$ 1000
+						</div>
+						{/* clear cart icon */}
+						<div className="cursor-pointer py-4 bg-red-500 text-white w-12 h-12 flex justify-center items-center text-xl">
+							<FiTrash2 onClick={() => clearCart()} />
+						</div>
 					</div>
-				))}</div>
+				</div>
 			</div>
 		</React.Fragment>
 	);
