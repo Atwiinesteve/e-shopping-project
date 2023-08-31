@@ -47,6 +47,16 @@ export default function Sidebar() {
 							<FiTrash2 onClick={() => clearCart()} />
 						</div>
 					</div>
+					<Link
+						className="bg-gray-200 flex capitalize p-4 justify-center items-center text-primary w-full font-medium"
+						to={"/"}>
+						view cart
+					</Link>
+					<Link
+						className="bg-primary flex p-4 justify-center items-center text-white uppercase w-full font-medium"
+						to={"/#"}>
+						checkout
+					</Link>
 				</div>
 			</div>
 		</React.Fragment>
