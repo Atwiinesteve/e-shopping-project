@@ -10,7 +10,7 @@ import { CartContext } from "../contexts/CartContext";
 
 export default function Sidebar() {
 	const { sidebarOpen, openSidebar } = React.useContext(SidebarContext);
-	const { cart, clearCart, totalPrice, setTotalPrice } =
+	const { cart, clearCart, totalPrice, setTotalPrice, cartCount } =
 		React.useContext(CartContext);
 	return (
 		<React.Fragment>
@@ -20,7 +20,7 @@ export default function Sidebar() {
 				} w-full bg-white fixed top-0 h-full shadow-2xl md:w-[35vw] xl:max-w-[30vw] transition-all duration-300 z-20 px-4 lg:px-[35px]`}>
 				<div className="flex items-center justify-between py-6 border-b">
 					<div className="uppercase text-sm font-semibold">
-						Shopping Bag (0)
+						Shopping Bag ({cartCount})
 					</div>
 					<div
 						onClick={openSidebar}
@@ -47,6 +47,16 @@ export default function Sidebar() {
 							<FiTrash2 onClick={() => clearCart()} />
 						</div>
 					</div>
+					<Link
+						className="bg-gray-200 flex capitalize p-4 justify-center items-center text-primary w-full font-medium"
+						to={"/"}>
+						view cart
+					</Link>
+					<Link
+						className="bg-primary flex p-4 justify-center items-center text-white uppercase w-full font-medium"
+						to={"/#"}>
+						checkout
+					</Link>
 				</div>
 			</div>
 		</React.Fragment>
