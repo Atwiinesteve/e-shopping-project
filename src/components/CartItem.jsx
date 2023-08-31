@@ -2,7 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { IoMdAdd, IoMdClose, IoMdRemove } from "react-icons/io";
 
+// import cart context
+import { CartContext } from "../contexts/CartContext";
+
 const CartItem = ({ item }) => {
+	const { removeFromCart } = React.useContext(CartContext);
 	const { id, title, price, image, amount } = item;
 	return (
 		<React.Fragment>
@@ -22,7 +26,9 @@ const CartItem = ({ item }) => {
 								{title}
 							</Link>
 							{/* remove icon */}
-							<div className="text-xl cursor-pointer">
+							<div
+								onClick={() => removeFromCart(id)}
+								className="text-xl cursor-pointer">
 								<IoMdClose className="text-gray-500 hover:text-red-500 transition" />
 							</div>
 						</div>
@@ -41,8 +47,12 @@ const CartItem = ({ item }) => {
 									<IoMdAdd />
 								</div>
 							</div>
-							<div className="flex-1 flex items-center justify-around">${price}</div>
-							<div className="flex-1 flex justify-end items-center text-primary font-medium">$ {`${parseFloat(price * amount).toFixed(2)}`}</div>
+							<div className="flex-1 flex items-center justify-around">
+								${price}
+							</div>
+							<div className="flex-1 flex justify-end items-center text-primary font-medium">
+								$ {`${parseFloat(price * amount).toFixed(2)}`}
+							</div>
 						</div>
 					</div>
 				</div>
