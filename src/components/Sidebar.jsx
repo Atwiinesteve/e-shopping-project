@@ -10,7 +10,8 @@ import { CartContext } from "../contexts/CartContext";
 
 export default function Sidebar() {
 	const { sidebarOpen, openSidebar } = React.useContext(SidebarContext);
-	const { cart, clearCart } = React.useContext(CartContext);
+	const { cart, clearCart, totalPrice, setTotalPrice } =
+		React.useContext(CartContext);
 	return (
 		<React.Fragment>
 			<div
@@ -27,9 +28,9 @@ export default function Sidebar() {
 						<IoMdArrowForward className="text-2xl" />
 					</div>
 				</div>
-				<div>
+				<div className="flex flex-col gap-y-2 h-[520px] lg:h-[650px] overflow-y-auto overflow-x-hidden border-b">
 					{cart.map((item) => (
-						<div>
+						<div key={item.id}>
 							<CartItem key={item.id} item={item} />
 						</div>
 					))}
@@ -38,7 +39,8 @@ export default function Sidebar() {
 					<div className="flex w-full justify-between items-center">
 						{/* total */}
 						<div className="uppercase font-semibold">
-							<span className="mr-2">Total: </span>$ 1000
+							<span className="mr-2">Total: </span>${" "}
+							{parseFloat(totalPrice).toFixed(2)}
 						</div>
 						{/* clear cart icon */}
 						<div className="cursor-pointer py-4 bg-red-500 text-white w-12 h-12 flex justify-center items-center text-xl">
