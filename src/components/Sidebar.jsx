@@ -10,7 +10,7 @@ import { CartContext } from "../contexts/CartContext";
 
 export default function Sidebar() {
 	const { sidebarOpen, openSidebar } = React.useContext(SidebarContext);
-	const { cart, clearCart, totalPrice, setTotalPrice, cartCount } =
+	const { cart, clearCart, totalPrice, cartCount } =
 		React.useContext(CartContext);
 	return (
 		<React.Fragment>

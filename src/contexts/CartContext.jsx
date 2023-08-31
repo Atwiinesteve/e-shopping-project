@@ -19,7 +19,7 @@ export const CartProvider = ({ children }) => {
 			return acc + item.price * item.amount;
 		}, 0);
 		setTotalPrice(total);
-	}); 
+	}, [cart]); 
 
 	// update cart count
 	React.useEffect(() => {
